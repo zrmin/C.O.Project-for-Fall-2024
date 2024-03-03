@@ -1,0 +1,8 @@
+The C.O.Project is divided into 7 LABS:
+Lab0: C Warm-Up & Preview
+Lab1: Write an assembler for the LC-3b Assembly Language
+Lab2: Write an instruction-level simulator
+Lab3: Write an cycle-level simulator
+Lab4: Write an cycle-level simulator supporting Interrupts and Exceptions
+Lab5: Write an cycle-level simulator supporting Virtual Memory
+Lab6: Write a 5-stage pipelined simulator
