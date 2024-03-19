@@ -143,7 +143,7 @@ void go()
 /* Procedure : mdump                                           */
 /*                                                             */
 /* Purpose   : Dump a word-aligned region of memory to the     */
-/*             output file.                                    */
+/*             output file                                     */
 /*                                                             */
 /***************************************************************/
 void mdump(FILE *dumpsim_file, int start, int stop)
@@ -170,7 +170,7 @@ void mdump(FILE *dumpsim_file, int start, int stop)
 /* Procedure : rdump                                           */
 /*                                                             */
 /* Purpose   : Dump current register and bus values to the     */   
-/*             output file.                                    */
+/*             output file                                     */
 /*                                                             */
 /***************************************************************/
 void rdump(FILE *dumpsim_file)
@@ -204,7 +204,7 @@ void rdump(FILE *dumpsim_file)
 /*                                                             */
 /* Procedure : get_command                                     */
 /*                                                             */
-/* Purpose   : Read a command from standard input.             */  
+/* Purpose   : Read a command from standard input              */  
 /*                                                             */
 /***************************************************************/
 void get_command(FILE *dumpsim_file)
@@ -273,7 +273,7 @@ void init_memory()
 /*                                                            */
 /* Procedure : load_program                                   */
 /*                                                            */
-/* Purpose   : Load program and service routines into mem.    */
+/* Purpose   : Load program and service routines into mem     */
 /*                                                            */
 /**************************************************************/
 void load_program(char *program_filename)
@@ -323,7 +323,7 @@ void load_program(char *program_filename)
 /* Procedure : initialize                                   */
 /*                                                          */
 /* Purpose   : Load machine language program                */ 
-/*             and set up initial state of the machine.     */
+/*             and set up initial state of the machine      */
 /*                                                          */
 /************************************************************/
 void initialize(char *program_filename, int num_prog_files)
