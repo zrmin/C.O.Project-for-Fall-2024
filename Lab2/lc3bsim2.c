@@ -2,7 +2,7 @@
  * REFER TO THE LAB2 INSTRUCTOR FOR DETAILS
  *
  * Name : Type your Name
- * ID   : Type your Student I.D
+ * ID   : Type your Student ID
  *
  */
 
@@ -18,12 +18,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-/***************************************************************/
-/*                                                             */
-/* Files: isaprogram   LC-3b machine language program file     */
-/*                                                             */
-/***************************************************************/
 
 /* These are the functions you'll have to write */
 void process_instruction();
@@ -45,11 +39,10 @@ void process_instruction();
 int MEMORY[WORDS_IN_MEM][2];
 
 
-/* LC-3b State info. */
+/* LC-3b State info */
 #define LC_3b_REGS 8
 
 int RUN_BIT;	/* run bit */
-
 
 typedef struct System_Latches_Struct {
         int PC,		/* program counter */
@@ -72,7 +65,8 @@ int INSTRUCTION_COUNT;
 /* Purpose   : Print out a list of commands                    */
 /*                                                             */
 /***************************************************************/
-void help() {                                                    
+void help()
+{                                                    
         printf("----------------LC-3b ISIM Help-----------------------\n");
         printf("go               -  run program to completion         \n");
         printf("run n            -  execute program for n instructions\n");
@@ -89,7 +83,8 @@ void help() {
 /* Purpose   : Execute a cycle                                 */
 /*                                                             */
 /***************************************************************/
-void cycle() {                                                
+void cycle()
+{                                                
         process_instruction();
         CURRENT_LATCHES = NEXT_LATCHES;
         INSTRUCTION_COUNT++;
@@ -102,7 +97,8 @@ void cycle() {
 /* Purpose   : Simulate the LC-3b for n cycles                 */
 /*                                                             */
 /***************************************************************/
-void run(int num_cycles) {                                      
+void run(int num_cycles)
+{                                      
         int i;
 
         if (RUN_BIT == FALSE) {
@@ -128,7 +124,8 @@ void run(int num_cycles) {
 /* Purpose   : Simulate the LC-3b until HALTed                 */
 /*                                                             */
 /***************************************************************/
-void go() {                                                     
+void go()
+{                                                     
         if (RUN_BIT == FALSE) {
                 printf("Can't simulate, Simulator is halted\n\n");
                 return;
@@ -149,8 +146,9 @@ void go() {
 /*             output file.                                    */
 /*                                                             */
 /***************************************************************/
-void mdump(FILE *dumpsim_file, int start, int stop) {          
-        int address; /* this is a byte address */
+void mdump(FILE *dumpsim_file, int start, int stop)
+{ 
+        int address;
 
         printf("\nMemory content [0x%.4x..0x%.4x] :\n", start, stop);
         printf("-------------------------------------\n");
@@ -175,7 +173,8 @@ void mdump(FILE *dumpsim_file, int start, int stop) {
 /*             output file.                                    */
 /*                                                             */
 /***************************************************************/
-void rdump(FILE *dumpsim_file) {                               
+void rdump(FILE *dumpsim_file)
+{  
         int k; 
 
         printf("\nCurrent register/bus values :\n");
@@ -208,7 +207,8 @@ void rdump(FILE *dumpsim_file) {
 /* Purpose   : Read a command from standard input.             */  
 /*                                                             */
 /***************************************************************/
-void get_command(FILE *dumpsim_file) {                         
+void get_command(FILE *dumpsim_file)
+{ 
         char buffer[20];
         int start, stop, cycles;
 
@@ -217,18 +217,16 @@ void get_command(FILE *dumpsim_file) {
         scanf("%s", buffer);
         printf("\n");
 
-        switch(buffer[0]) {
+        switch (buffer[0]) {
                 case 'G':
                 case 'g':
                         go();
                         break;
-
                 case 'M':
                 case 'm':
                         scanf("%i %i", &start, &stop);
                         mdump(dumpsim_file, start, stop);
                         break;
-
                 case '?':
                         help();
                         break;
@@ -261,7 +259,8 @@ void get_command(FILE *dumpsim_file) {
 /* Purpose   : Zero out the memory array                       */
 /*                                                             */
 /***************************************************************/
-void init_memory() {                                           
+void init_memory()
+{ 
         int i;
 
         for (i=0; i < WORDS_IN_MEM; i++) {
@@ -277,8 +276,9 @@ void init_memory() {
 /* Purpose   : Load program and service routines into mem.    */
 /*                                                            */
 /**************************************************************/
-void load_program(char *program_filename) {                   
-        FILE * prog;
+void load_program(char *program_filename)
+{ 
+        FILE *prog;
         int ii, word, program_base;
 
         /* Open program file. */
@@ -289,8 +289,9 @@ void load_program(char *program_filename) {
         }
 
         /* Read in the program. */
-        if (fscanf(prog, "%x\n", &word) != EOF)
+        if (fscanf(prog, "%x\n", &word) != EOF) {
                 program_base = word >> 1;
+        }
         else {
                 printf("Error: Program file is empty\n");
                 exit(-1);
@@ -298,14 +299,14 @@ void load_program(char *program_filename) {
 
         ii = 0;
         while (fscanf(prog, "%x\n", &word) != EOF) {
-                /* Make sure it fits. */
+                /* Make sure it fits */
                 if (program_base + ii >= WORDS_IN_MEM) {
                         printf("Error: Program file %s is too long to fit in memory. %x\n",
                                         program_filename, ii);
                         exit(-1);
                 }
 
-                /* Write the word to memory array. */
+                /* Write the word to memory array */
                 MEMORY[program_base + ii][0] = word & 0x00FF;
                 MEMORY[program_base + ii][1] = (word >> 8) & 0x00FF;
                 ii++;
@@ -325,7 +326,8 @@ void load_program(char *program_filename) {
 /*             and set up initial state of the machine.     */
 /*                                                          */
 /************************************************************/
-void initialize(char *program_filename, int num_prog_files) { 
+void initialize(char *program_filename, int num_prog_files)
+{ 
         int i;
 
         init_memory();
@@ -333,7 +335,7 @@ void initialize(char *program_filename, int num_prog_files) {
                 load_program(program_filename);
                 while(*program_filename++ != '\0');
         }
-        CURRENT_LATCHES.Z = 1;  
+        CURRENT_LATCHES.Z = 1; 
         NEXT_LATCHES = CURRENT_LATCHES;
 
         RUN_BIT = TRUE;
@@ -344,13 +346,14 @@ void initialize(char *program_filename, int num_prog_files) {
 /* Procedure : main                                            */
 /*                                                             */
 /***************************************************************/
-int main(int argc, char *argv[]) {                              
+int main(int argc, char *argv[])
+{
         FILE *dumpsim_file;
 
         /* Error Checking */
         if (argc < 2) {
-                printf("Error: usage: %s <program_file_1> <program_file_2> ...\n",
-                                argv[0]);
+                printf("Error: usage: %s <program_file_1> <program_file_2> \
+                                ...\n", argv[0]);
                 exit(1);
         }
 
@@ -358,7 +361,7 @@ int main(int argc, char *argv[]) {
 
         initialize(argv[1], argc - 1);
 
-        if ((dumpsim_file = fopen( "dumpsim", "w" )) == NULL) {
+        if ((dumpsim_file = fopen("dumpsim", "w")) == NULL) {
                 printf("Error: Can't open dumpsim file\n");
                 exit(-1);
         }
@@ -370,7 +373,7 @@ int main(int argc, char *argv[]) {
 /*
  * Do not modify the above code.
  * You are allowed to use the following global variables in your
- * code. These are defined above.
+ * code. These are defined above:
  *
  * MEMORY
  * CURRENT_LATCHES
@@ -381,18 +384,20 @@ int main(int argc, char *argv[]) {
  * above.
  *
  * Begin your code here
+ *
  */
 
-void process_instruction() {
-        /*  
+void process_instruction()
+{
+        /* 
          *  function: process_instruction
-         *  
+         * 
          *    Process one instruction at a time  
          *       -Fetch one instruction
          *       -Decode 
          *       -Execute
          *       -Update NEXT_LATCHES
          *
-         */     
+         */ 
 
 }
