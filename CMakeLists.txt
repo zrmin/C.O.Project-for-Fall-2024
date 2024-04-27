@@ -78,3 +78,32 @@ add_custom_target(info
   COMMAND man -l ../scripts/coproject
   COMMENT "Displaying the manual page for C.O.Project"
 )
+
+add_custom_target(usage
+  # 使用cmake -E 选项来执行echo命令，确保跨平台一致性
+  COMMAND ${CMAKE_COMMAND} -E echo ""
+  COMMAND ${CMAKE_COMMAND} -E echo "Usage: make [target]"
+  COMMAND ${CMAKE_COMMAND} -E echo ""
+  COMMAND ${CMAKE_COMMAND} -E echo "Available targets:"
+  COMMAND ${CMAKE_COMMAND} -E echo "  info\t-  List C.O.Project overview"
+  COMMAND ${CMAKE_COMMAND} -E echo "  lab0\t-  Build lab0 target `warmup`"
+  COMMAND ${CMAKE_COMMAND} -E echo "  lab1\t-  Build lab1 target `assembler`"
+  COMMAND ${CMAKE_COMMAND} -E echo "  lab2\t-  Build lab2 target `lc3bsim2`"
+  COMMAND ${CMAKE_COMMAND} -E echo "  lab3\t-  Build lab3 target `lc3bsim3`"
+  COMMAND ${CMAKE_COMMAND} -E echo "  lab4\t-  Build lab4 target `lc3bsim4`"
+  COMMAND ${CMAKE_COMMAND} -E echo "  lab5\t-  Build lab5 target `lc3bsim5`"
+  COMMAND ${CMAKE_COMMAND} -E echo "  lab6\t-  Build lab6 target `lc3bsim6`"
+
+  COMMAND ${CMAKE_COMMAND} -E echo ""
+
+  COMMAND ${CMAKE_COMMAND} -E echo "  help\t- Show this message"
+  DEPENDS ""
+  # 确保'help'目标在默认构建时不被调用
+  VERBATIM
+)
+
+# 设置help目标的属性，以排除在默认构建之外
+set_target_properties(usage PROPERTIES
+  EXCLUDE_FROM_ALL TRUE
+  EXCLUDE_FROM_DEFAULT_BUILD TRUE
+)
