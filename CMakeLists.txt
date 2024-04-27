@@ -96,7 +96,7 @@ add_custom_target(usage
 
   COMMAND ${CMAKE_COMMAND} -E echo ""
 
-  COMMAND ${CMAKE_COMMAND} -E echo "  help\t- Show this message"
+  COMMAND ${CMAKE_COMMAND} -E echo "  usage\t- Show this message"
   DEPENDS ""
   # 确保'help'目标在默认构建时不被调用
   VERBATIM
