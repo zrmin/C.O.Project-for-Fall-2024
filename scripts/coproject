@@ -1,0 +1,56 @@
+.TH C.O.Project 1 "27 April 2024" "C.O.Project Manual" "LABS Overview"
+.SH NAME
+C.O.Project \- Computer Organization Project
+.br
+This manual page is part of the C.O.Project (version 1.0.0.0).
+.SH DESCRIPTION
+The C.O.Project is an educational project divided into seven labs, each focusing on a different aspect of computer engineering and simulation.
+.SH LABS
+.PP
+Below is a brief description of each lab within the C.O.Project:
+.TP
+.B Lab0
+C Warm-Up & Preview \- Introduces the C programming language and provides a preview of the project.
+.TP
+.B Lab1
+Write an assembler for the LC-3b Assembly Language \- Develops an assembler that can compile LC-3b assembly code.
+.TP
+.B Lab2
+Write an instruction-level simulator \- Creates a simulator that operates at the instruction level without cycle accuracy.
+.TP
+.B Lab3
+Write a cycle-level simulator \- Advances to a simulator that models the CPU cycle by cycle.
+.TP
+.B Lab4
+Write a cycle-level simulator supporting Interrupts and Exceptions \- Enhances the simulator to handle interrupts and exceptions.
+.TP
+.B Lab5
+Write a cycle-level simulator supporting Virtual Memory \- Implements virtual memory support in the cycle-level simulator.
+.TP
+.B Lab6
+Write a 5-stage pipelined simulator \- Constructs a pipelined simulator with five distinct stages.
+.PP
+Each lab builds on the previous ones, providing a comprehensive understanding of computer system architecture and simulation.
+.SH REPORTING BUGS
+Report bugs to current FMRT members,
+.br
+or
+.br
+.MT fmrt19zrmin@163.com
+FMRT19 Zhang Runmin
+.ME
+.SH SEE ALSO
+.br
+.BR lc3bsim,
+the main simulator command for the project.
+.PP
+\fB C.O.Project Laboratory Manual \fR or \fB C.O.Project Lab Guide \fR for detailed lab instructions and guidelines.
+.PP
+\fB ICS3e\fR, related documentation or textbook.
+.SH AUTHOR
+Written by
+.MT fmrt19zrmin@163.com
+FMRT19 Zhang Runmin
+.ME
+.SH COPYRIGHT
+Copyright \(co 2024 Follow MIPS Run Team
