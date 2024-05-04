@@ -266,19 +266,19 @@ void mdump(FILE *dumpsim_file, int start, int stop)
 {
 	int address;
 
-	printf("\nMemory content [0x%0.4x..0x%0.4x] :\n", start, stop);
+	printf("\nMemory content [0x%.4x..0x%.4x] :\n", start, stop);
 	printf("-------------------------------------\n");
 	for (address = (start >> 1); address <= (stop >> 1); address++)
-		printf("  0x%0.4x (%d) : 0x%0.2x%0.2x\n",
+		printf("  0x%.4x (%d) : 0x%.2x%.2x\n",
 		       address << 1, address << 1, MEMORY[address][1], MEMORY[address][0]);
 	printf("\n");
 
 	/* dump the memory contents into the dumpsim file */
-	fprintf(dumpsim_file, "\nMemory content [0x%0.4x..0x%0.4x] :\n",
+	fprintf(dumpsim_file, "\nMemory content [0x%.4x..0x%.4x] :\n",
 			start, stop);
 	fprintf(dumpsim_file, "-------------------------------------\n");
 	for (address = (start >> 1); address <= (stop >> 1); address++)
-		fprintf(dumpsim_file, " 0x%0.4x (%d) : 0x%0.2x%0.2x\n",
+		fprintf(dumpsim_file, " 0x%.4x (%d) : 0x%.2x%.2x\n",
 				address << 1, address << 1, MEMORY[address][1],
 				MEMORY[address][0]);
 	fprintf(dumpsim_file, "\n");
@@ -300,34 +300,34 @@ void rdump(FILE *dumpsim_file)
 	printf("\nCurrent register/bus values :\n");
 	printf("-------------------------------------\n");
 	printf("Cycle Count  : %d\n", CYCLE_COUNT);
-	printf("PC           : 0x%0.4x\n", CURRENT_LATCHES.PC);
-	printf("IR           : 0x%0.4x\n", CURRENT_LATCHES.IR);
-	printf("STATE_NUMBER : 0x%0.4x\n\n", CURRENT_LATCHES.STATE_NUMBER);
-	printf("BUS          : 0x%0.4x\n", BUS);
-	printf("MDR          : 0x%0.4x\n", CURRENT_LATCHES.MDR);
-	printf("MAR          : 0x%0.4x\n", CURRENT_LATCHES.MAR);
+	printf("PC           : 0x%.4x\n", CURRENT_LATCHES.PC);
+	printf("IR           : 0x%.4x\n", CURRENT_LATCHES.IR);
+	printf("STATE_NUMBER : 0x%.4x\n\n", CURRENT_LATCHES.STATE_NUMBER);
+	printf("BUS          : 0x%.4x\n", BUS);
+	printf("MDR          : 0x%.4x\n", CURRENT_LATCHES.MDR);
+	printf("MAR          : 0x%.4x\n", CURRENT_LATCHES.MAR);
 	printf("CCs: N = %d  Z = %d  P = %d\n",
 			CURRENT_LATCHES.N, CURRENT_LATCHES.Z, CURRENT_LATCHES.P);
 	printf("Registers:\n");
 	for (k = 0; k < LC_3b_REGS; k++)
-		printf("%d: 0x%0.4x\n", k, CURRENT_LATCHES.REGS[k]);
+		printf("%d: 0x%.4x\n", k, CURRENT_LATCHES.REGS[k]);
 	printf("\n");
 
 	/* dump the state information into the dumpsim file */
 	fprintf(dumpsim_file, "\nCurrent register/bus values :\n");
 	fprintf(dumpsim_file, "-------------------------------------\n");
 	fprintf(dumpsim_file, "Cycle Count  : %d\n", CYCLE_COUNT);
-	fprintf(dumpsim_file, "PC           : 0x%0.4x\n", CURRENT_LATCHES.PC);
-	fprintf(dumpsim_file, "IR           : 0x%0.4x\n", CURRENT_LATCHES.IR);
-	fprintf(dumpsim_file, "STATE_NUMBER : 0x%0.4x\n\n", CURRENT_LATCHES.STATE_NUMBER);
-	fprintf(dumpsim_file, "BUS          : 0x%0.4x\n", BUS);
-	fprintf(dumpsim_file, "MDR          : 0x%0.4x\n", CURRENT_LATCHES.MDR);
-	fprintf(dumpsim_file, "MAR          : 0x%0.4x\n", CURRENT_LATCHES.MAR);
+	fprintf(dumpsim_file, "PC           : 0x%.4x\n", CURRENT_LATCHES.PC);
+	fprintf(dumpsim_file, "IR           : 0x%.4x\n", CURRENT_LATCHES.IR);
+	fprintf(dumpsim_file, "STATE_NUMBER : 0x%.4x\n\n", CURRENT_LATCHES.STATE_NUMBER);
+	fprintf(dumpsim_file, "BUS          : 0x%.4x\n", BUS);
+	fprintf(dumpsim_file, "MDR          : 0x%.4x\n", CURRENT_LATCHES.MDR);
+	fprintf(dumpsim_file, "MAR          : 0x%.4x\n", CURRENT_LATCHES.MAR);
 	fprintf(dumpsim_file, "CCs: N = %d  Z = %d  P = %d\n",
 			CURRENT_LATCHES.N, CURRENT_LATCHES.Z, CURRENT_LATCHES.P);
 	fprintf(dumpsim_file, "Registers:\n");
 	for (k = 0; k < LC_3b_REGS; k++)
-		fprintf(dumpsim_file, "%d: 0x%0.4x\n",
+		fprintf(dumpsim_file, "%d: 0x%.4x\n",
 				k, CURRENT_LATCHES.REGS[k]);
 	fprintf(dumpsim_file, "\n");
 	fflush(dumpsim_file);
