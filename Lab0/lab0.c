@@ -293,13 +293,12 @@ int main(int argc, char *argv[])
 	 */
 
 	/* Corner case */
-	if (!strcmp(argv[1], "0")) {
-		printf("No part 0 in this lab!\n");
-		exit(0);
-	}
-
 	if (argc != 2 || !atoi(argv[1])) {
 		printf("Usage: %s <num>\n", argv[0]);
+		exit(0);
+	}
+	if (!strcmp(argv[1], "0")) {
+		printf("No part 0 in this lab!\n");
 		exit(0);
 	}
 
