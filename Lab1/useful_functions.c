@@ -91,7 +91,7 @@ int main(int argc, char *argv[])
 
 
 /*
- * Thrid.
+ * Third.
  * Convert a String To a Number
  * Hex numbers must be in the form "x3000",
  * and decimal numbers must be in the form "#30".
